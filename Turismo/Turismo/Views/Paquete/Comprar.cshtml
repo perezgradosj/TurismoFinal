@@ -1,0 +1,115 @@
+﻿@model Turismo.Bean.Paquete
+@using Turismo.Bean
+@{
+    ViewBag.Title = "Comprar";
+    Usuario user = Session["usuario"] as Usuario;
+}
+
+<div class="container">
+    <h2 style="text-align:center">PROCESO DE COMPRA</h2>
+    <form id="form-compra">
+        <fieldset>
+            <legend>Datos del paquete turístico</legend>
+            <div class="form-group row">
+                <input type="hidden" id="idpaquete" name="idpaquete" value="@Model.id"/>
+                <div class="col-md-4">
+                    <label style="font-weight:bold">Nombre:</label>
+                    <input type="text" readonly class="form-control-plaintext form-control-sm" value="@Model.titulo"/>
+                </div>
+                <div class="col-md-4">
+                    <label style="font-weight:bold">Pasajes disponibles:</label>
+                    <input type="hidden" id="dis" value="@Model.disponibles"/>
+                    <input type="text" readonly class="form-control-plaintext form-control-sm"  value="@Model.disponibles pasajes"/>
+                </div>
+                <div class="col-md-4">
+                    <label style="font-weight:bold">Duración</label>
+                    <input type="text" readonly class="form-control-plaintext form-control-sm"  value="@Model.dias días"/>
+                </div>                
+            </div>
+            <div class="form-group row">
+                <div class="col-md-4">
+                    <label style="font-weight:bold">Tiempo de anticipación de compra</label>
+                    <input type="text" readonly class="form-control-plaintext form-control-sm" value="@Model.horasAnticipado horas" />
+                </div>
+                <div class="col-md-4">
+                    <label style="font-weight:bold">Precio en habitación doble o triple</label>
+                    <input type="hidden" id="preciodoble" value="@Model.precioHabDobleTripe"/>
+                    <input type="text" readonly class="form-control-plaintext form-control-sm" value="S/. @Model.precioHabDobleTripe" />
+                </div>
+                <div class="col-md-4">
+                    <label style="font-weight:bold">Precio en habitación simple</label>
+                    <input type="hidden" id="preciosimple" value="@Model.precioHabSimple"/>
+                    <input type="text" readonly class="form-control-plaintext form-control-sm" value="S/. @Model.precioHabSimple" />
+                </div>
+            </div>
+        </fieldset>
+        <br />
+        <fieldset>
+            <legend>Datos de usuario</legend>
+            <div class="form-group row">
+                <input type="hidden" id="idusuario" name="idusuario" value="@user.idusuario"/>
+                <div class="col-md-4">
+                    <label style="font-weight:bold">Nombres y apellidos:</label>
+                    <input type="text" class="form-control form-control-sm" value="@user.nombres_rep" required />
+                </div>
+                <div class="col-md-4">
+                    <label style="font-weight:bold">Correo electrónico:</label>
+                    <input type="text" readonly class="form-control-plaintext form-control-sm" id="correo" name="correo" value="@user.correo"/>
+                </div>
+                <div class="col-md-4">
+                    <label style="font-weight:bold">Celular:</label>
+                    <input type="text" class="form-control form-control-sm" id="celular" name="celular" maxlength="9" minlength="9" pattern="[0-9]{1,9}" title="Solo se permiten dígitos del 0 al 9" required/>
+                </div>
+            </div>
+        </fieldset>
+        <br />
+        <fieldset>
+            <legend>Datos de compra</legend>
+            <div class="form-group row">
+                <div class="col-md-3">
+                    <label style="font-weight:bold">N° pasajero en Hab. doble o triple</label>
+                    <select class="form-control form-control-sm" id="npasajHabDobTriple" name="npasajHabDobTriple">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label style="font-weight:bold">N° pasajero en Hab. simple</label>
+                    <select class="form-control form-control-sm" id="npasajHabSimple" name="npasajHabSimple">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label style="font-weight:bold">Total (S/.):</label>
+                    <input type="text" readonly class="form-control-plaintext form-control-sm" id="total" name="total" style="color:red"/>
+                </div>
+                <div class="col-md-3">
+                    <label style="font-weight:bold" >Fecha de inicio:</label>
+                    <input type="date" class="form-control form-control-sm" id="fechaInicio" name="fechaInicio" required/>
+                </div>
+            </div>
+        </fieldset>
+        <div class="form-group row">
+            <div class="col-md-12" align="center">
+                <div class="alert alert-success" role="alert" id="alert-success" style="display:none"></div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-12" align="center">
+                <a href="/Paquete/Index" class="btn btn-light btn-lg" id="btn-limpiar">Regresar</a>
+                <button type="submit" class="btn btn btn-outline-danger btn-lg" id="btn-terminar">Terminar compra</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section scripts{
+    <script src="~/Scripts/js/ComprarPaquete.js"></script>
+}
