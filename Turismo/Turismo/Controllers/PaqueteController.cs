@@ -22,6 +22,22 @@ namespace Turismo.Controllers
         {
             return View();
         }
+
+        // GET: Listar
+        public ActionResult List()
+        {
+            return View();
+        }
+
+        // GET: Listar
+        public JsonResult ListarByUsuario()
+        {
+            Usuario x = Session["usuario"] as Usuario;
+            List<Paquete> paquetes = model.ListarByUsuario(x.idusuario);
+            return Json(paquetes, JsonRequestBehavior.AllowGet);
+        }
+
+        // GET: Comprar
         public ActionResult Comprar(int idpaquete)
         {
             Paquete x = model.FindById(idpaquete);
@@ -123,10 +139,26 @@ namespace Turismo.Controllers
         [HttpPost]
         public JsonResult LstByRegion(string region)
         {
-
             List<Paquete> x = model.LstByRegion(region);
-
             return Json(x);
+        }
+
+        public JsonResult LstByPrecio(int precio1, int precio2)
+        {
+            List<Paquete> x = model.LstByPrecio(precio1, precio2);
+            return Json(x,JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult LstByCategoria(string categoria)
+        {
+            List<Paquete> x = model.LstByCategoria(categoria);
+            return Json(x, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult LstBySeguridad(string seguridad)
+        {
+            List<Paquete> x = model.LstBySeguridad(seguridad);
+            return Json(x, JsonRequestBehavior.AllowGet);
         }
     }
 }

@@ -24,7 +24,10 @@
             <h5 class="my-0 mr-md-auto font-weight-normal"><a href="/Home/Index"><img src="~/Img/logo.jpg" class="rounded float-left" style="width:156px;height:50px;" /></a></h5>
             <nav class="my-2 my-md-0 mr-md-3">
                 <a class="p-2 text-dark" href="/Home/Index">Inicio</a>
-                <a class="p-2 text-dark" href="/Paquete/Index">Paquetes turísticos</a>
+                @if (usuario == null || usuario.idtipo_usuario == 1)
+                {
+                    <a class="p-2 text-dark" href="/Paquete/Index">Paquetes turísticos</a>
+                }                    
                 <a class="btn btn-success" href="#" data-toggle="modal" data-target=".modal-registro" style="display:@display;">Registrarme</a>
             </nav>
             <a class="btn btn-primary" href="#" data-toggle="modal" data-target="#modal-inicio" style="display:@display;" id="btnModalInicio">Ingresar</a>
@@ -43,7 +46,7 @@
                     @if (usuario.idtipo_usuario == 1)
                     {
                         <a class="dropdown-item" href="#">Mis datos</a>
-                        <a class="dropdown-item" href="#">Mis paquetes</a>
+                        <a class="dropdown-item" href="/Paquete/List">Mis paquetes</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="/Usuario/Logout">Cerrar sesión</a>
                     }
@@ -212,8 +215,32 @@
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label>Region</label>
-                                            <select class="form-control" name="idregion" required>
+                                            <select class="form-control" name="idregion" required>1
                                                 <option value="1">Amazonas</option>
+                                                <option value="2">Ancash</option>
+                                                <option value="3">Apurimac</option>
+                                                <option value="4">Arequipa</option>
+                                                <option value="5">Ayucucho</option>
+                                                <option value="6">Cajamarca</option>
+                                                <option value="7">Callao</option>
+                                                <option value="8">Cusco</option>
+                                                <option value="9">Huancavelica</option>
+                                                <option value="10">Huanuco</option>
+                                                <option value="11">Ica</option>
+                                                <option value="12">Junin</option>
+                                                <option value="13">La libertad</option>
+                                                <option value="14">Lambayeque</option>
+                                                <option value="15">Lima</option>
+                                                <option value="16">Loreto</option>
+                                                <option value="17">Madre de Dios</option>
+                                                <option value="18">Moquegua</option>
+                                                <option value="19">Pasco</option>
+                                                <option value="20">Piura</option>
+                                                <option value="21">Puno</option>
+                                                <option value="22">San Martin</option>
+                                                <option value="23">Tacna</option>
+                                                <option value="24">Tumbes</option>
+                                                <option value="25">Ucayali</option>
                                             </select>
                                         </div>
                                         <div class="col-sm-8">

@@ -11,6 +11,7 @@ namespace Turismo.Bean
 
         public string fecha_public_desde { get; set; }
         public string fecha_public_hasta { get; set; }
+        public string fecha_inicio { get; set; }
 
         public int dias { get; set; }
         public int noches { get; set; }

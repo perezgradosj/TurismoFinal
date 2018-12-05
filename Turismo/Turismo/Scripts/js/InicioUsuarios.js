@@ -15,8 +15,13 @@
                     menssageDanger.text("Usuario o clave incorrecta");
                     menssageDanger.css("display", "block");
                 } else {
-                    menssageDanger.css("display", "none");
-                    location.reload(true);
+                    if (result.idtipo_usuario == 2) {
+                        menssageDanger.css("display", "none");
+                        location.href = "/Home/Index";
+                    } else {
+                        menssageDanger.css("display", "none");
+                        location.reload(true);
+                    }                    
                 }               
             }
         });

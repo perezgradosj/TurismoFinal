@@ -1,0 +1,80 @@
+﻿
+@{
+    ViewBag.Title = "List";
+}
+
+<div class="container">
+    <h2 style="text-align:center">MIS PAQUETES</h2>
+    <hr />
+    <div class="table-responsive">
+        <table class="table table-sm table-bordered" id="table">
+            <thead class="table-secondary" style="text-align:center">
+                <tr>
+                    <th>Nro</th>
+                    <th>Título</th>
+                    <th>Destino</th>
+                    <th>Fecha Inicio</th>
+                    <th>Imagen</th>
+                    <th>Detalle</th>
+                </tr>
+            </thead>
+            <tbody style="text-align:center"></tbody>
+        </table>
+    </div>
+</div>
+<!-- Modal detalle-->
+<div class="modal fade" id="detalleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Detalle de paquete</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <center><h5>Itinerario</h5></center>
+                        <div class="table-responsive">
+                            <table class="table table-sm" id="iditinerarios">
+                                <thead>
+                                    <tr style="text-align:center" class="table-primary">
+                                        <th>Día</th>
+                                        <th>Descripción</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="col-md-12">
+                        <center><h5>Alojamiento y alimentación</h5></center>
+                        <div class="table-responsive">
+                            <table class="table table-sm" id="idalimentacion">
+                                <thead>
+                                    <tr style="text-align:center" class="table-success">
+                                        <th>Día</th>
+                                        <th>Alojamiento</th>
+                                        <th>Alimentación</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script src="~/Scripts/js/ListarPaquetes.js"></script>
+}
+

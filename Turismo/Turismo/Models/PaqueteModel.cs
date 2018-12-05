@@ -114,6 +114,174 @@ namespace Turismo.Models
             return lista;
         }
 
+        public List<Paquete> LstByCategoria(string categoria)
+        {
+
+            List<Paquete> lista = new List<Paquete>();
+            Paquete x = null;
+            conexion = con.getConexion();
+            try
+            {
+                conexion.Open();
+                comando = new SqlCommand("Usp_LstAnunciosByCategoria", conexion);
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.AddWithValue("@categoria", categoria);
+
+                reader = comando.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        x = new Paquete();
+                        x.id = reader.GetInt32(0);
+                        x.titulo = reader.GetString(1);
+                        x.destino = reader.GetString(2);
+                        x.fecha_public_desde = reader.GetDateTime(3).ToShortDateString();
+                        x.fecha_public_hasta = reader.GetDateTime(4).ToShortDateString();
+                        x.dias = reader.GetInt32(5);
+                        x.noches = reader.GetInt32(6);
+                        x.precioHabDobleTripe = reader.GetInt32(12);
+                        x.idestado = reader.GetInt32(21);
+                        x.foto1Name = reader.GetString(14);
+                        lista.Add(x);
+                    }
+                }
+                conexion.Close();
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            return lista;
+        }
+
+        public List<Paquete> LstBySeguridad(string seguridad)
+        {
+
+            List<Paquete> lista = new List<Paquete>();
+            Paquete x = null;
+            conexion = con.getConexion();
+            try
+            {
+                conexion.Open();
+                comando = new SqlCommand("Usp_LstAnunciosBySeguridad", conexion);
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.AddWithValue("@seguridad", seguridad);
+
+                reader = comando.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        x = new Paquete();
+                        x.id = reader.GetInt32(0);
+                        x.titulo = reader.GetString(1);
+                        x.destino = reader.GetString(2);
+                        x.fecha_public_desde = reader.GetDateTime(3).ToShortDateString();
+                        x.fecha_public_hasta = reader.GetDateTime(4).ToShortDateString();
+                        x.dias = reader.GetInt32(5);
+                        x.noches = reader.GetInt32(6);
+                        x.precioHabDobleTripe = reader.GetInt32(12);
+                        x.idestado = reader.GetInt32(21);
+                        x.foto1Name = reader.GetString(14);
+                        lista.Add(x);
+                    }
+                }
+                conexion.Close();
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            return lista;
+        }
+
+        public List<Paquete> LstByPrecio(int precio1, int precio2)
+        {
+
+            List<Paquete> lista = new List<Paquete>();
+            Paquete x = null;
+            conexion = con.getConexion();
+            try
+            {
+                conexion.Open();
+                comando = new SqlCommand("Usp_LstAnunciosByPrecio", conexion);
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.AddWithValue("@precio1", precio1);
+                comando.Parameters.AddWithValue("@precio2", precio2);
+
+                reader = comando.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        x = new Paquete();
+                        x.id = reader.GetInt32(0);
+                        x.titulo = reader.GetString(1);
+                        x.destino = reader.GetString(2);
+                        x.fecha_public_desde = reader.GetDateTime(3).ToShortDateString();
+                        x.fecha_public_hasta = reader.GetDateTime(4).ToShortDateString();
+                        x.dias = reader.GetInt32(5);
+                        x.noches = reader.GetInt32(6);
+                        x.precioHabDobleTripe = reader.GetInt32(12);
+                        x.idestado = reader.GetInt32(21);
+                        x.foto1Name = reader.GetString(14);
+                        lista.Add(x);
+                    }
+                }
+                conexion.Close();
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            return lista;
+        }
+
+        public List<Paquete> ListarByUsuario(int idusuario)
+        {
+
+            List<Paquete> lista = new List<Paquete>();
+            Paquete x = null;
+            conexion = con.getConexion();
+            try
+            {
+                conexion.Open();
+                comando = new SqlCommand("Usp_LstAnunciosByUsuario", conexion);
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.AddWithValue("@idusuario", idusuario);
+
+                reader = comando.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        x = new Paquete();
+                        x.id = reader.GetInt32(0);
+                        x.titulo = reader.GetString(1);
+                        x.destino = reader.GetString(2);
+                        x.fecha_inicio = reader.GetDateTime(3).ToShortDateString();
+                        x.foto1Name = reader.GetString(4);
+                        lista.Add(x);
+                    }
+                }
+                conexion.Close();
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            return lista;
+        }
+
         public bool Comprar(Compra x)
         {
             bool result = false;

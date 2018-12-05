@@ -70,6 +70,56 @@
     };
     $("#select-región").change(filtrarPaquetesByRegion);
 
+    //Filtrar paquetes por precio
+    $("#select-precio").change(function () {
+        var arrayPrecio = $(this).val().split('-');
+        var precio1 = arrayPrecio[0];
+        var precio2 = arrayPrecio[1];
+        $("#div-paquetes").empty();
+        $.ajax({
+            type: "GET",
+            url: "/Paquete/LstByPrecio",
+            data: { precio1, precio2 },
+            dataType: "json",
+            success: function (result) {
+                console.log(result);
+                $.each(result, listado);
+            }
+        });
+    });
+
+    //Filtrar paquetes por categoría
+    $("#select-categoria").change(function () {
+        var categoria = $(this).val();
+        $("#div-paquetes").empty();
+        $.ajax({
+            type: "GET",
+            url: "/Paquete/LstByCategoria",
+            data: { categoria },
+            dataType: "json",
+            success: function (result) {
+                console.log(result);
+                $.each(result, listado);
+            }
+        });
+    });
+
+    //Filtrar categoria por seguridad
+    $("#select-seguridad").change(function () {
+        var seguridad = $(this).val();
+        $("#div-paquetes").empty();
+        $.ajax({
+            type: "GET",
+            url: "/Paquete/LstBySeguridad",
+            data: { seguridad },
+            dataType: "json",
+            success: function (result) {
+                console.log(result);
+                $.each(result, listado);
+            }
+        });
+    });
+
     var DetallePaquete = function () {
         var idpaquete = $(this).val();
         $("#iditinerarios tbody").empty();
